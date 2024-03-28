@@ -1,7 +1,21 @@
----
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/avromedh/repositories/AvromedNew
-    - /bin/rm -Rf $DEPLOYPATH
-    - /bin/mkdir $DEPLOYPATH
-    - /bin/cp -R src/. $DEPLOYPATH
+name: AVRO MED PUBLISH
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ftp-server : ${{secrets.FTP_SERVER}}
+          ftp-username : ${{secrets.FTP_USERNAME}}
+          ftp-password : ${{secrets.FTP_PASSWORD}}
