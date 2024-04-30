@@ -21,7 +21,7 @@ jobs:
           ftp-password : ${{secrets.FTP_PASSWORD}}
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/example/public_html/
+    - export DEPLOYPATH=/home/avromedh/public_html/
     - /bin/cp index.html $DEPLOYPATH
     - /bin/cp style.css $DEPLOYPATH
       # Add more steps for your build process
