@@ -1,23 +1,16 @@
 import PropTypes from 'prop-types';
-
-import Link from '@mui/material/Link';
+import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
-// import Avatar from '@mui/material/Avatar';
 
-import { paths } from 'src/routes/paths';
-import { RouterLink } from 'src/routes/components';
-
-// import { fDate } from 'src/utils/format-time';
-
+import Iconify from 'src/components/iconify';
 import Image from 'src/components/image';
 import TextMaxLine from 'src/components/text-max-line';
-import Iconify from 'src/components/iconify';
-import Button from '@mui/material/Button';
-// import PostTimeBlock from '../common/post-time-block';
+
+import { paths } from 'src/routes/paths';
 
 // ----------------------------------------------------------------------
 
-export default function MarketingFeaturedPostItem({ post, index}) {
+export default function MarketingFeaturedPostItem({ post, index }) {
   return (
     <Stack
       direction={{
@@ -37,30 +30,28 @@ export default function MarketingFeaturedPostItem({ post, index}) {
         }}
       >
         <Stack spacing={1}>
-
-          {/* <Link component={RouterLink} href={paths.marketing.post} color="inherit" variant="h3">
+          <TextMaxLine variant="h4" textAlign="center">
             {post.title}
-          </Link> */}
-            <TextMaxLine variant="h4" textAlign="center">{post.title}</TextMaxLine>
-          <TextMaxLine line={5} variant="body2" justifyContent="space-between" textAlign="justify"sx={{ color: 'text.secondary' }}>
+          </TextMaxLine>
+          <TextMaxLine
+            line={5}
+            variant="body2"
+            justifyContent="space-between"
+            textAlign="justify"
+            sx={{ color: 'text.secondary' }}
+          >
             {post.description}
           </TextMaxLine>
           <Button
             size="large"
             color="inherit"
-            // href={paths.marketing.posts}
-            href={paths.marketing.post + `/${index}`}
+            href={`${paths.marketing.post}/${index}`}
             endIcon={<Iconify icon="carbon:chevron-right" />}
             sx={{ my: 5 }}
           >
             Дэлгэрэнгүй
           </Button>
         </Stack>
-
-        {/* <Stack direction="row" alignItems="center" sx={{ pt: 2, typography: 'body2' }}>
-          <Avatar src={post.author.avatarUrl} sx={{ mr: 1 }} />
-          {post.author.name}
-        </Stack> */}
       </Stack>
     </Stack>
   );
@@ -70,7 +61,6 @@ MarketingFeaturedPostItem.propTypes = {
   post: PropTypes.shape({
     title: PropTypes.string,
     coverUrl: PropTypes.string,
-    duration: PropTypes.string,
     description: PropTypes.string,
     createdAt: PropTypes.instanceOf(Date),
     author: PropTypes.shape({
@@ -78,4 +68,5 @@ MarketingFeaturedPostItem.propTypes = {
       name: PropTypes.string,
     }),
   }),
+  index: PropTypes.number.isRequired, // Ensures 'index' is properly validated
 };

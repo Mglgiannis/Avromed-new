@@ -51,23 +51,17 @@ export default function MarketingPostItem({ post, index }) {
         }}
       >
         <Stack spacing={2}>
-          {/* <PostTimeBlock
-            duration={post.duration}
-            createdAt={fDate(post.createdAt)}
-            sx={{ color: 'inherit', opacity: 0.72 }}
-          /> */}
-
-          <Link component={RouterLink} 
-          href={paths.marketing.post + `/${index}`}
-           title={post.title} sx={{ color: 'common.white' }}>
-            <TextMaxLine variant="h4" textAlign="center">{post.title}</TextMaxLine>
+          <Link
+            component={RouterLink}
+            href={`${paths.marketing.post}/${index}`}
+            title={post.title}
+            sx={{ color: 'common.white' }}
+          >
+            <TextMaxLine variant="h4" textAlign="center">
+              {post.title}
+            </TextMaxLine>
           </Link>
         </Stack>
-
-        {/* <Stack direction="row" alignItems="center" sx={{ typography: 'body2' }}>
-          <Avatar src={post.author.avatarUrl} sx={{ mr: 1 }} />
-          {post.author.name}
-        </Stack> */}
       </Stack>
     </Stack>
   );
@@ -75,7 +69,7 @@ export default function MarketingPostItem({ post, index }) {
 
 MarketingPostItem.propTypes = {
   post: PropTypes.shape({
-    title: 'dassadsaddasdas',
+    title: PropTypes.string,
     coverUrl: PropTypes.string,
     duration: PropTypes.string,
     createdAt: PropTypes.instanceOf(Date),
@@ -84,4 +78,5 @@ MarketingPostItem.propTypes = {
       name: PropTypes.string,
     }),
   }),
+  index: PropTypes.number.isRequired, // Added prop validation for 'index'
 };

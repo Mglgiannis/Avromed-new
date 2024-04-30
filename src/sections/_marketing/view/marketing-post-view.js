@@ -1,28 +1,29 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useCallback, useState } from 'react';
 
 import Stack from '@mui/material/Stack';
 // import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import Popover from '@mui/material/Popover';
 // import Checkbox from '@mui/material/Checkbox';
-import MenuItem from '@mui/material/MenuItem';
 import Container from '@mui/material/Container';
-import Grid from '@mui/material/Unstable_Grid2';
+import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Unstable_Grid2';
+import PropTypes from 'prop-types';
 // import IconButton from '@mui/material/IconButton';
 
 import { paths } from 'src/routes/paths';
 
 // import { fDate } from 'src/utils/format-time';
 
-import { _socials, _marketingPosts } from 'src/_mock';
+import { _marketingPosts, _socials } from 'src/_mock';
 
 // import Image from 'src/components/image';
+import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 import Iconify from 'src/components/iconify';
 import Markdown from 'src/components/markdown';
-import CustomBreadcrumbs from 'src/components/custom-breadcrumbs';
 
 // import PostTags from '../../blog/common/post-tags';
 // import PostAuthor from '../../blog/common/post-author';
@@ -35,7 +36,6 @@ import BlogMarketingLatestPosts from '../../blog/marketing/marketing-latest-post
 export default function MarketingPostView({ index }) {
   const { title, description, detail, createdAt, author, favorited, tags, content } =
     _marketingPosts[index];
-
 
   const [favorite, setFavorite] = useState(favorited);
 
@@ -55,7 +55,6 @@ export default function MarketingPostView({ index }) {
 
   return (
     <>
-
       <Container>
         <CustomBreadcrumbs
           sx={{ my: 3 }}
@@ -92,16 +91,16 @@ export default function MarketingPostView({ index }) {
 
             <Divider />
             {/* <Stack direction="row" justifyContent="space-between" spacing={1.5} sx={{ py: 3 }}> */}
-              {/* <Avatar src={author.avatarUrl} sx={{ width: 48, height: 48 }} /> */}
+            {/* <Avatar src={author.avatarUrl} sx={{ width: 48, height: 48 }} /> */}
 
-              {/* <Stack spacing={0.5} flexGrow={1}>
+            {/* <Stack spacing={0.5} flexGrow={1}>
                 <Typography variant="subtitle2">{author.name}</Typography>
                 <Typography variant="caption" sx={{ color: 'text.secondary' }}>
                   {fDate(createdAt, 'dd/MM/yyyy p')}
                 </Typography>
               </Stack> */}
 
-              {/* <Stack direction="row" alignItems="center">
+            {/* <Stack direction="row" alignItems="center">
                 <IconButton onClick={handleOpen} color={open ? 'primary' : 'default'}>
                   <Iconify icon="carbon:share" />
                 </IconButton>
@@ -161,3 +160,6 @@ export default function MarketingPostView({ index }) {
     </>
   );
 }
+MarketingPostView.propTypes = {
+  index: PropTypes.number.isRequired, // Assuming index should be a number and is required
+};
