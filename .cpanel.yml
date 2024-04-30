@@ -19,5 +19,9 @@ jobs:
           ftp-server : ${{secrets.FTP_SERVER}}
           ftp-username : ${{secrets.FTP_USERNAME}}
           ftp-password : ${{secrets.FTP_PASSWORD}}
-
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/example/public_html/
+    - /bin/cp index.html $DEPLOYPATH
+    - /bin/cp style.css $DEPLOYPATH
       # Add more steps for your build process
